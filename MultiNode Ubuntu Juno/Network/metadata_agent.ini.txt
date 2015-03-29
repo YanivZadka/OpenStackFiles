@@ -1,0 +1,10 @@
+root@network:~# cat /etc/neutron/metadata_agent.ini
+[DEFAULT]
+auth_url = http://controller.openstack.local:5000/v2.0
+auth_region = regionOne
+admin_tenant_name = service
+admin_user = neutron
+admin_password = pswd
+nova_metadata_ip = controller
+metadata_proxy_shared_secret = pswd
+verbose = True

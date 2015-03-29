@@ -1,0 +1,6 @@
+root@network:~# cat /etc/neutron/l3_agent.ini
+[DEFAULT]
+interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
+dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+use_namespaces = True
+verbose = True

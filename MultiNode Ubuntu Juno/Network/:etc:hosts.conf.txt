@@ -1,0 +1,6 @@
+127.0.0.1	localhost
+#158.85.83.149	network.openstack.local network
+
+10.114.132.199  controller.openstack.local controller
+10.114.132.196 	network.openstack.local network
+10.114.132.197 	compute.openstack.local compute

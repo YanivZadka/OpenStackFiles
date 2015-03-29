@@ -1,0 +1,25 @@
+root@compute:~# cat /etc/neutron/neutron.conf
+[DEFAULT]
+#rpc_backend = rabbit
+rabbit_host = controller.openstack.local
+rabbit_password = guest
+auth_strategy = keystone
+lock_path = $state_path/lock
+core_plugin = ml2
+service_plugins = router
+allow_overlapping_ips = True
+verbose = True
+[matchmaker_redis]
+[matchmaker_ring]
+[quotas]
+[agent]
+root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
+[keystone_authtoken]
+auth_uri = http://controller.openstack.local:5000/v2.0
+identity_uri = http://controller.openstack.local:35357
+admin_tenant_name = service
+admin_user = neutron
+admin_password = pswd
+[service_providers]
+service_provider=LOADBALANCER:Haproxy:neutron.services.loadbalancer.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default
+service_provider=VPN:openswan:neutron.services.vpn.service_drivers.ipsec.IPsecVPNDriver:default

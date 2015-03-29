@@ -1,0 +1,29 @@
+root@controller:~# cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+auto lo
+# The loopback network interface
+iface lo inet loopback
+
+# eth0
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+	address 10.114.132.199
+	netmask 255.255.255.192
+	post-up route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.114.132.193
+
+# eth1
+auto eth1
+allow-hotplug eth1
+iface eth1 inet static
+	address 158.85.83.148
+	netmask 255.255.255.240
+	gateway 158.85.83.145
+
+#IPV6 configuration
+iface eth1 inet6 static
+	address 2607:f0d0:3601:0123:0000:0000:0000:0006
+	netmask 64
+	gateway 2607:f0d0:3601:0123:0000:0000:0000:0001

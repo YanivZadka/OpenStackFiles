@@ -1,0 +1,43 @@
+root@network:~# cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+auto lo
+# The loopback network interface
+iface lo inet loopback
+
+# eth0
+auto eth0
+#allow-hotplug eth0
+iface eth0 inet manual
+up ip address add 0/0 dev $IFACE
+up ip link set $IFACE up
+down ip link set $IFACE down
+#    up ifconfig \$IFACE 0.0.0.0 up
+#    up ip link set \$IFACE promisc on
+#    down ip link set \$IFACE promisc off
+#    down ifconfig \$IFACE down
+
+# br-ex
+auto br-ex
+iface br-ex inet static
+address 10.114.132.196
+netmask 255.255.255.192
+#gateway 10.114.132.193
+dns-nameservers 8.8.8.8
+post-up route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.114.132.193    #up ip link set \$IFACE promisc on
+    #down ip link set \$IFACE promisc off					post-up route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.114.132.193
+
+# eth1
+auto eth1
+allow-hotplug eth1
+iface eth1 inet static
+	address 158.85.83.149
+	netmask 255.255.255.240
+	gateway 158.85.83.145
+
+#IPV6 configuration
+#iface eth1 inet6 static
+#	address 2607:f0d0:3601:0123:0000:0000:0000:0004
+#	netmask 64
+#	gateway 2607:f0d0:3601:0123:0000:0000:0000:0001

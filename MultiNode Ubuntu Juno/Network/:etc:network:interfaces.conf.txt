@@ -1,0 +1,33 @@
+#######Don't use this file until you actually install openvswitch. Leave network configuration as-is until then.
+root@network:~# cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+auto lo
+# The loopback network interface
+iface lo inet loopback
+
+# eth0
+auto eth0
+#allow-hotplug eth0
+iface eth0 inet manual
+up ip address add 0/0 dev $IFACE
+up ip link set $IFACE up
+down ip link set $IFACE down
+
+
+# br-ex
+auto br-ex
+iface br-ex inet static
+address 10.114.132.196
+netmask 255.255.255.192
+dns-nameservers 8.8.8.8
+post-up route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.114.132.193
+
+# eth1
+auto eth1
+allow-hotplug eth1
+iface eth1 inet static
+	address 158.85.83.149
+	netmask 255.255.255.240
+	gateway 158.85.83.145

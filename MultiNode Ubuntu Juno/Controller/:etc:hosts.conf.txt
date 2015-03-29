@@ -1,0 +1,7 @@
+root@controller:~# cat /etc/hosts
+127.0.0.1	localhost.localdomain localhost
+#158.85.83.148	controller.openstack.local controller
+
+10.114.132.199  controller.openstack.local controller
+10.114.132.196 	network.openstack.local network
+10.114.132.197 	compute.openstack.local compute

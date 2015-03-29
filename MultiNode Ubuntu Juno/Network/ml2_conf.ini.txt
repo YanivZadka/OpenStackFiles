@@ -1,0 +1,22 @@
+root@network:~# cat /etc/neutron/plugins/ml2/ml2_conf.ini
+[ml2]
+type_drivers = flat,gre
+tenant_network_types = gre
+mechanism_drivers = openvswitch
+[ml2_type_flat]
+flat_networks = external
+[ml2_type_vlan]
+[ml2_type_gre]
+tunnel_id_ranges = 1:1000
+[ml2_type_vxlan]
+[ovs]
+local_ip = 10.114.132.196
+enable_tunneling = True
+tunnel_type = gre
+bridge_mappings = external:br-ex
+[securitygroup]
+enable_security_group = True
+firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+enable_ipset = True
+[agent]
+tunnel_types = gre

@@ -1,0 +1,14 @@
+root@compute:~# cat /etc/hosts
+127.0.0.1	localhost
+#127.0.1.1	ubuntu
+
+10.114.132.199  controller.openstack.local controller
+10.114.132.196 	network.openstack.local network
+10.114.132.197 	compute.openstack.local compute
+
+# The following lines are desirable for IPv6 capable hosts
+#::1     localhost ip6-localhost ip6-loopback
+#ff02::1 ip6-allnodes
+#ff02::2 ip6-allrouters
+#158.85.83.150 compute.openstack.local compute debauto
+#158.85.83.150 compute.openstack.local compute debauto
